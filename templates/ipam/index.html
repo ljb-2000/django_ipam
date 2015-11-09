@@ -1,15 +1,21 @@
 {% extends '_base.html' %}
 
 {% block content %}
-<h1> IP Address Manager </h1>
 
 <h2> Supernets </h2>
 {% if supernets_list %}
-  <ul>
+  <table class="table table-striped">
+   <th>ID</th>
+   <th>Prefix</th>
+   <th>Region</th>
 {%  for supernet in supernets_list %}
-    <li><a href="/ipam/supernet/id/{{ supernet.id }}/">{{ supernet.address_space }}</a></li>
+   <tr>
+    <td>{{ supernet.id }}</td>
+    <td><a href="/ipam/supernet/id/{{ supernet.id }}/">{{ supernet.address_space }}</a></td>
+    <td>{{ supernet.region }}</td>
+   </tr>
 {%  endfor %}
-  </ul>
+  </table>
 {% else %}
   <p>No Supernets have been defined</p>
 {% endif %}
