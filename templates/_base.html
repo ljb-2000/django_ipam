@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>IP Address Management</title>
+    {% load bootstrap3 %}
+    {% bootstrap_css %}
+  </head>
+  <body>
+  <p></p>
+  {% if messages %}
+  {%   bootstrap_messages %}
+  {% endif %}
+  {% block content %}{% endblock %}
+{% bootstrap_javascript %}
+  </body>
+</html>

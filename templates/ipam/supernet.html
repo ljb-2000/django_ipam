@@ -1,3 +1,6 @@
+{% extends '_base.html' %}
+
+{% block content %}
 {% if supernet %}
 <h1> Manage Supernet {{ supernet.address_space }} </h1>
 
@@ -7,3 +10,4 @@
 <p> {{ supernet.region }} </p>
 {%  endif %}
 {% endif %}
+{% endblock %}

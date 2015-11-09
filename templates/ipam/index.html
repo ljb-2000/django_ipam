@@ -1,11 +1,6 @@
-{% if messages %}
-<ul class="messages">
-    {% for message in messages %}
-    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
-    {% endfor %}
-</ul>
-{% endif %}
+{% extends '_base.html' %}
 
+{% block content %}
 <h1> IP Address Manager </h1>
 
 <h2> Supernets </h2>
@@ -30,3 +25,4 @@
 {% else %}
   <p>No Subnets have been defined</p>
 {% endif %}
+{% endblock %}
