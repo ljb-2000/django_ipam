@@ -1,0 +1,4 @@
+Django==1.8.6
+django-bootstrap3==6.2.2
+netaddr==0.7.18
+wsgiref==0.1.2
