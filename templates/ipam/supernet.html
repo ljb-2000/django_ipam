@@ -2,12 +2,19 @@
 
 {% block content %}
 {% if supernet %}
-<h1> Manage Supernet {{ supernet.address_space }} </h1>
+<h1> {{ supernet.address_space }} </h1>
 
-<p> {{ supernet.id }} </p>
-<p> {{ supernet.address_space }} </p>
+<a href="/ipam/supernet/edit/{{ supernet.id }}/"><button type="button" class="btn btn-warning">Edit</button></a>
+<a href="/ipam/supernet/delete/{{ supernet.id }}/"><button type="button" class="btn btn-danger">Delete</button></a>
+
 {%  if supernet.region %}
-<p> {{ supernet.region }} </p>
+<p></p>
+<table class="table table-striped">
+ <th>Region</th>
+ <tr class="info">
+  <td class="active">{{ supernet.region }}</td>
+ </tr>
+</table>
 {%  endif %}
 {% endif %}
 {% endblock %}
