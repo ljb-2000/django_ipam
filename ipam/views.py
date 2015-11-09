@@ -59,9 +59,13 @@ def new_supernet(request):
 
 def edit_supernet(request, supernet_id):
     if request.method == 'GET':
-        supernet = SuperBlock.objects.get(id=supernet_id)
-        return render(request, 'ipam/edit_supernet.html',
-                      {'supernet': supernet})
+        try:
+            supernet = SuperBlock.objects.get(id=supernet_id)
+            return render(request, 'ipam/edit_supernet.html',
+                          {'supernet': supernet})
+        except:
+            messages.error(request, "Error. Unknown supernet")
+            return HttpResponseRedirect('/ipam/')
     else:
         form = NewSuperNet(request.POST)
         region = form['region']
