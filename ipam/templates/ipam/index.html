@@ -1,0 +1,32 @@
+{% if messages %}
+<ul class="messages">
+    {% for message in messages %}
+    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+    {% endfor %}
+</ul>
+{% endif %}
+
+<h1> IP Address Manager </h1>
+
+<h2> Supernets </h2>
+{% if supernets_list %}
+  <ul>
+{%  for supernet in supernets_list %}
+    <li><a href="/ipam/supernet/id/{{ supernet.id }}/">{{ supernet.address_space }}</a></li>
+{%  endfor %}
+  </ul>
+{% else %}
+  <p>No Supernets have been defined</p>
+{% endif %}
+
+<h2> Subnets </h2>
+
+{% if subnets_list %}
+  <ul>
+{%  for subnet in subnets_list %}
+    <li><a href="/ipam/subnet/id/{{ subnet.id }}/">{{ subnet.address_space }}</a></li>
+{%  endfor %}
+  </ul>
+{% else %}
+  <p>No Subnets have been defined</p>
+{% endif %}

@@ -1,0 +1,43 @@
+{% if messages %}
+<ul class="messages">
+    {% for message in messages %}
+    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+    {% endfor %}
+</ul>
+{% endif %}
+
+<form class="form-horizontal" method="POST">
+<fieldset>
+{% csrf_token %}
+
+<!-- Form Name -->
+<legend>Edit {{ supernet.address_space }}</legend>
+
+<!-- Text input-->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="address_space">Address Space</label>  
+  <div class="col-md-4">
+  <input id="address_space" name="address_space" type="text" value="{{ supernet.address_space }}" class="form-control input-md" required="">
+  <span class="help-block">Enter a supernet. (Required)</span>  
+  </div>
+</div>
+
+<!-- Text input-->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="region">Region</label>  
+  <div class="col-md-4">
+  <input id="region" name="region" type="text" value="{{ supernet.region }}" class="form-control input-md">
+  <span class="help-block">Location that the supernet will be advertised from. (Optional)</span>  
+  </div>
+</div>
+
+<!-- Button -->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="submit">Submit</label>
+  <div class="col-md-4">
+    <button id="submit" name="submit" class="btn btn-primary">Button</button>
+  </div>
+</div>
+
+</fieldset>
+</form>

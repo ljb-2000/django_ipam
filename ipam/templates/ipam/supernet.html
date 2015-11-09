@@ -1,0 +1,9 @@
+{% if supernet %}
+<h1> Manage Supernet {{ supernet.address_space }} </h1>
+
+<p> {{ supernet.id }} </p>
+<p> {{ supernet.address_space }} </p>
+{%  if supernet.region %}
+<p> {{ supernet.region }} </p>
+{%  endif %}
+{% endif %}
