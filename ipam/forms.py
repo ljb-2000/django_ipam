@@ -20,6 +20,7 @@ class NewSubNet(forms.ModelForm):
     environment = forms.CharField(label='environment', required=False)
     region = forms.CharField(label='region', required=False)
     customer_name = forms.CharField(label='customer_name', required=False)
+    super_block = forms.ModelChoiceField(queryset=SuperBlock.objects.all(), to_field_name=id)
 
     class Meta:
         model = Subnet
@@ -29,4 +30,5 @@ class NewSubNet(forms.ModelForm):
                   'vlan_id',
                   'environment',
                   'region',
-                  'customer_name')
+                  'customer_name',
+                  'super_block')

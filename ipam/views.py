@@ -112,34 +112,32 @@ def new_subnet(request):
     supernets_list = SuperBlock.objects.all()
     if request.method == 'POST':
         form = NewSubNet(request.POST)
-        if form.is_valid():
-            address_space = form.cleaned_data['address_space']
-            vrf = form.cleaned_data['vrf']
-            route_target = form.cleaned_data['route_target']
-            vlan_id = form.cleaned_data['vlan_id']
-            environment = form.cleaned_data['environment']
-            region = form.cleaned_data['region']
-            customer_name = form.cleaned_data['customer_name']
-            try:
-                new = Subnet(address_space = address_space,
-                             vrf = vrf,
-                             route_target = route_target,
-                             vlan_id = vlan_id,
-                             environment = environment,
-                             region = region,
-                             customer_name = customer_name)
-                new.save()
-                messages.success(request, "{0} was successfully added."
-                                 .format(address_space))
-            except:
-                raise
-                messages.error(request, "Error adding {0}."
-                               .format(address_space))
-                return HttpResponseRedirect('/ipam/subnet/new/')
-            return HttpResponseRedirect('/ipam/')
-        else:
-            messages.error(request, "Invalid request.")
+        address_space = form['address_space']
+        vrf = form['vrf']
+        route_target = form['route_target']
+        vlan_id = form['vlan_id']
+        environment = form['environment']
+        region = form['region']
+        customer_name = form['customer_name']
+        super_block = SuperBlock.objects.get(id='32')
+        try:
+            new = Subnet(address_space = address_space,
+                         vrf = vrf,
+                         route_target = route_target,
+                         vlan_id = vlan_id,
+                         environment = environment,
+                         region = region,
+                         customer_name = customer_name,
+                         super_block = super_block)
+            new.save()
+            messages.success(request, "{0} was successfully added."
+                             .format(address_space))
+        except:
+            raise
+            messages.error(request, "Error adding {0}."
+                           .format(address_space))
             return HttpResponseRedirect('/ipam/subnet/new/')
+        return HttpResponseRedirect('/ipam/')
     else:
         form = NewSubNet()
         return render(request, 'ipam/new_subnet.html',
