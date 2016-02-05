@@ -13,5 +13,7 @@ urlpatterns = [
     url(r'^supernet/id/(?P<supernet_id>[0-9]+)/$', views.view_supernet,
         name='view_supernet'),
     url(r'^subnet/id/(?P<subnet_id>[0-9]+)/$', views.view_subnet,
-        name='view_subnet')
+        name='view_subnet'),
+    url(r'^subnet/new/$', views.new_subnet,
+        name='new_subnet'),
 ]

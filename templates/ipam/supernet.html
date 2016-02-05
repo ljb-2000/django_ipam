@@ -4,6 +4,7 @@
 {% if supernet %}
 <h1> {{ supernet.address_space }} </h1>
 
+<a href="/ipam/subnet/new/"><button type="button" class="btn btn-info">New Subnet</button></a>
 <a href="/ipam/supernet/edit/{{ supernet.id }}/"><button type="button" class="btn btn-warning">Edit</button></a>
 <a href="/ipam/supernet/delete/{{ supernet.id }}/"><button type="button" class="btn btn-danger">Delete</button></a>
 

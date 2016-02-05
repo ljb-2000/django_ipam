@@ -1,0 +1,96 @@
+{% extends '_base.html' %}
+
+{% block content %}
+<form class="form-horizontal" method="POST">
+<fieldset>
+{% csrf_token %}
+
+<!-- Form Name -->
+<legend>New Subnet</legend>
+
+<!-- Select Basic -->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="super_block">SuperNet</label>
+  <div class="col-md-4">
+    <select id="super_block" name="super_block" class="form-control">
+{% for supernet in supernets_list %}
+      <option value="{{ supernet }}">{{ supernet }}</option>
+{% endfor %}
+    </select>
+  </div>
+</div>
+
+<!-- Text input-->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="address_space">Address Space</label>  
+  <div class="col-md-4">
+  <input id="address_space" name="address_space" type="text" placeholder="10.0.0.0/9" class="form-control input-md" required="">
+  <span class="help-block">Enter a subnet (Required)</span>  
+  </div>
+</div>
+
+<!-- Text input-->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="vrf">VRF</label>  
+  <div class="col-md-4">
+  <input id="vrf" name="vrf" type="text" placeholder="VRF Name" class="form-control input-md">
+  <span class="help-block">Enter a VRF (Optional)</span>  
+  </div>
+</div>
+
+<!-- Text input-->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="route_target">Route Target</label>  
+  <div class="col-md-4">
+  <input id="route_target" name="route_target" type="text" placeholder="64512:1001" class="form-control input-md">
+  <span class="help-block">Enter a BGP Route Target, should be paired with a VRF (Optional)</span>  
+  </div>
+</div>
+
+<!-- Text input-->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="vlan_id">VLAN</label>  
+  <div class="col-md-4">
+  <input id="vlan_id" name="vlan_id" type="text" placeholder="100" class="form-control input-md">
+  <span class="help-block">Enter a VLAN (Optional)</span>  
+  </div>
+</div>
+
+<!-- Text input-->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="environment">Environment</label>  
+  <div class="col-md-4">
+  <input id="environment" name="environment" type="text" placeholder="DC1 PoP" class="form-control input-md">
+  <span class="help-block">Enter an environment description (Optional)</span>  
+  </div>
+</div>
+
+<!-- Text input-->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="region">Region</label>  
+  <div class="col-md-4">
+  <input id="region" name="region" type="text" placeholder="(Region|Location) Name" class="form-control input-md">
+  <span class="help-block">Location that the subnet will be advertised from. (Optional)</span>  
+  </div>
+</div>
+
+<!-- Text input-->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="customer_name">Customer Name</label>  
+  <div class="col-md-4">
+  <input id="customer_name" name="customer_name" type="text" placeholder="Customer A, Acct #1" class="form-control input-md">
+  <span class="help-block">Enter customer name for multi-tenant environment.</span>  
+  </div>
+</div>
+
+<!-- Button -->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="submit">Submit</label>
+  <div class="col-md-4">
+    <button id="submit" name="submit" class="btn btn-primary">Submit</button>
+  </div>
+</div>
+
+</fieldset>
+</form>
+{% endblock %}
